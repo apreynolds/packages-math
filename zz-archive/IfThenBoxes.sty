@@ -1,0 +1,262 @@
+\ProvidesPackage{IfThenBoxes}
+
+\RequirePackage{marginnote}
+
+% Fakesection mycomment
+\newcommand\mycomment[1]{%
+  \ifdefined\MyComments
+    \tcbox[
+    on line,
+    left=1pt,
+    right=1pt,
+    top=1pt,
+    bottom=1pt,
+    boxrule=0.3mm,
+    arc=0mm,
+    outer arc=0mm,
+    colframe=Lavender!90,
+    colback=Lavender!9
+    ]
+    {\sffamily #1}
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
+% Fakesection MC answer
+% for MC questions: Places box around correct answer in Solutions:
+\newcommand\Answer[1]{%
+  \ifdefined\Solutions
+    \tcbox[tcbox raise base, colframe=ForestGreen, colback=ForestGreen!3, arc = 0mm, outer arc = 0mm, boxrule=0.2mm, left=2pt, right=2pt, top=2pt, bottom=2pt]{#1}
+  \else
+    #1
+  \fi
+}
+% Fakesection Answer, gobbled
+\newcommand\answergobbled[1]{%
+  \ifdefined\Solutions
+    \tcbox[
+    on line,
+    left=1pt,
+    right=1pt,
+    top=1pt,
+    bottom=1pt,
+    boxrule=0.2mm,
+    arc=0mm,
+    outer arc=0mm,
+    colframe=ForestGreen,
+    colback=ForestGreen!5,
+    ]
+    {#1}
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
+
+% Fakesection MyComment box
+\NewEnviron{MyCommentBox}[1]{%
+  \ifdefined\MyComments
+    \begin{tcolorbox}[%
+      enhanced,
+      breakable,
+      oversize,
+      left=15pt,
+      right=15pt,
+      top=9pt,
+      boxrule=0.1mm,
+      arc=0mm,
+      outer arc=0mm,
+      colframe=Lavender!50,
+      colback=Lavender!9,
+      colbacktitle=Lavender,
+      coltitle=White,
+      title={\ttfamily\bfseries\small note},
+      attach boxed title to top left={xshift=5pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,boxrule=0pt,arc=0pt,colback=Lavender!70, outer arc=0mm,top=0pt,left=0pt,right=0pt,bottom=0pt}
+      ]
+      \sffamily \BODY 
+    \end{tcolorbox}
+  \else
+    \@gobble{\BODY}\ignorespaces
+    \vspace{#1}
+  \fi
+}
+% Fakesection MyComment box Plain
+\NewEnviron{MyCommentBoxPlain}{%
+  \ifdefined\MyComments
+      \BODY 
+  \else
+    \@gobble{\BODY}\ignorespaces
+  \fi
+}
+% Fakesection Solution box
+\NewEnviron{SolutionBox}[1]{%
+  \ifdefined\Solutions
+    \begin{tcolorbox}[%
+      parbox=false,
+      enhanced,
+      breakable,
+      oversize,
+      left=15pt,
+      right=15pt,
+      top=9pt,
+      boxrule=0.1mm,
+      arc=0mm,
+      outer arc=0mm,
+      colframe=ForestGreen!50,
+      colback=ForestGreen!3,
+      colbacktitle=ForestGreen,
+      coltitle=White,
+      title={\ttfamily\bfseries\small solution},
+      attach boxed title to top left={xshift=5pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,boxrule=0pt,arc=0pt,colback=ForestGreen!30, outer arc=0mm,top=0pt,left=0pt,right=0pt,bottom=0pt}
+      ]
+      \BODY
+    \end{tcolorbox}
+  \else
+    \@gobble{\BODY}\ignorespaces
+    \vspace{#1}
+  \fi
+}
+% Fakesection NotInSolution box
+\NewEnviron{NotInSolutionBox}{%
+  \ifdefined\Solutions
+    \@gobble{\BODY}\ignorespaces
+  \else
+    \BODY
+  \fi
+}
+% Fakesection Hint box: TODO 2024-12-13 set this up
+\NewEnviron{HintBox}{%
+  %\ifdefined\Hints
+    \begin{tcolorbox}[%
+      enhanced,
+      breakable,
+      oversize,
+      left=15pt,
+      right=15pt,
+      top=9pt,
+      boxrule=0.1mm,
+      arc=0mm,
+      outer arc=0mm,
+      colframe=Yellow!50,
+      colback=Yellow!9,
+      colbacktitle=Yellow,
+      coltitle=White,
+      title={\ttfamily\bfseries\small note},
+      attach boxed title to top left={xshift=5pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,boxrule=0pt,arc=0pt,colback=Yellow!70, outer arc=0mm,top=0pt,left=0pt,right=0pt,bottom=0pt}
+      ]
+      \sffamily \BODY 
+    \end{tcolorbox}
+  %\else
+    %\@gobble{\BODY}\ignorespaces
+  %\fi
+}
+
+% Fakesection MyCommentInput 
+% Example use case: A section of comments/notes for fellow instructors; can be used in conjunction with margincomment command
+\newcommand\MyCommentInput[1]{%
+  \ifdefined\MyComments
+    \input{#1}
+  \else
+  \fi
+}
+% Fakesection marginnote
+% Example use case: "See \hyerref[label]{this note}", where label is in a separate section (inputted by MyCommentInput); if I want I can anchor the margin comment with hypertarget command (google-able)
+\newcommand\margincomment[1]{%
+  \ifdefined\MyComments
+    \marginnote{\textcolor{Red}{\sffamily\bfseries #1}}
+  \else
+  \fi
+}
+
+% Fakesection OLDER, TO DELETE
+%%%%%%%%%%%%%%%%%%%%%%
+%  OLDER, TO DELETE  %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\noteinlineold[1]{%
+  \ifdefined\MyComments
+    {\sffamily\sethlcolor{BrickRed!15}\textcolor{BrickRed!80!Black}{\hl{#1}}}%
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
+\newcommand\noteboxold[1]{%
+  \ifdefined\MyComments
+    \begin{tcolorbox}[%
+      enhanced,
+      breakable,
+      oversize,
+      left=5pt,
+      right=5pt,
+      top=9pt,
+      boxrule=0.8mm,
+      arc=3mm,
+      colframe=BrickRed,
+      colback=Red!5,
+      coltitle=White,
+      title={\ttfamily\bfseries\small note to marker:},
+      attach boxed title to top left={xshift=12pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,colback=BrickRed}
+      ]
+      \sffamily #1
+    \end{tcolorbox}
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
+\newcommand\notebox[1]{%
+  \ifdefined\MyComments
+    \begin{tcolorbox}[%
+      enhanced,
+      breakable,
+      oversize,
+      left=5pt,
+      right=5pt,
+      top=9pt,
+      boxrule=0.8mm,
+      arc=3mm,
+      leftrule=2.5mm,
+      rightrule=2.5mm,
+      colframe=Lavender,
+      colback=Lavender!15,
+      colbacktitle=Lavender,
+      coltitle=Gray,
+      drop fuzzy shadow,
+      title={\ttfamily\bfseries\small (instructor-only note)},
+      attach boxed title to top left={xshift=12pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,colback=Lavender}
+      ]
+      \sffamily #1
+    \end{tcolorbox}
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
+\newcommand\solutionbox[1]{%
+  \ifdefined\Solutions
+    \begin{tcolorbox}[%
+      enhanced,
+      breakable,
+      oversize,
+      left=5pt,
+      right=5pt,
+      top=9pt,
+      boxrule=0.2mm,
+      arc=0mm,
+      outer arc=0mm,
+      colframe=ForestGreen,
+      colback=ForestGreen!3,
+      colbacktitle=ForestGreen,
+      coltitle=White,
+      title={\ttfamily\bfseries\small solution},
+      attach boxed title to top left={xshift=5pt,yshift=-\tcboxedtitleheight/2},
+      boxed title style={size=small,colback=ForestGreen, outer arc=0mm}
+      ]
+      #1
+    \end{tcolorbox}
+  \else
+    \@gobble{#1}\ignorespaces
+  \fi
+}
