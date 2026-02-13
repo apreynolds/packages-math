@@ -2,7 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Test}
 \LoadClass[12pt]{article}  
-%asdf
 
 %TODO 2024-12-16 Add tikz option
 %TODO bring in the IfThenBoxes and clean them up
