@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LectureNotes}[2025-08-28]
+\ProvidesClass{custom-cls-sty/LectureNotes}[2025-08-28]
 
 %TODO redefine bigskip, medskip, smallskip
 

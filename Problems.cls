@@ -1,6 +1,6 @@
 %UPDATED 2024-08-23 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Problems}
+\ProvidesClass{custom-cls-sty/Problems}
 \LoadClass[11pt]{article}  
 
 % Fakesection BASIC PACKAGES

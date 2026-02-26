@@ -1,6 +1,6 @@
 %Updated 2024-10-08 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Assignment}
+\ProvidesClass{custom-cls-sty/Assignment}
 \LoadClass[12pt]{article}  
 
 % Fakesection COMPILATION INSTRUCTIONS

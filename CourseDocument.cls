@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{CourseDocument}[2025-08-25]
+\ProvidesClass{custom-cls-sty/CourseDocument}[2025-08-25]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fakesection OPTIONS
