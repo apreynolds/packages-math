@@ -1,6 +1,6 @@
 %UPDATED 2024-12-13
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Test}
+\ProvidesClass{custom-cls-sty/Test}
 \LoadClass[12pt]{article}  
 
 %TODO 2024-12-16 Add tikz option
