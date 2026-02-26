@@ -568,6 +568,6 @@
 } %END title
 
 % Fakesubsection IFTHENBOXES
-\RequirePackage{IfThenBoxes} %custom_package
+\RequirePackage{custom-cls-sty/IfThenBoxes} %custom_package
 
 } % END AtEndOfClass
